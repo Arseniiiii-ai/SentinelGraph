@@ -97,7 +97,13 @@ sentinelgraph/
 │   ├── raw/               # ignored archive and canonical CSV
 │   ├── interim/           # ignored DuckDB analytical cache
 │   └── processed/         # ignored leakage-safe Parquet splits
+├── models/
+│   └── v0.2/              # ignored fitted baseline binaries
+├── reports/
+│   └── v0.2/
+│       └── baseline_metrics.json
 ├── docs/
+│   ├── BASELINE_REPORT.md
 │   ├── DATA_DICTIONARY.md
 │   ├── DATA_QUALITY_REPORT.md
 │   ├── DATA_SOURCE.md
@@ -113,13 +119,24 @@ sentinelgraph/
 │       │   ├── report.py
 │       │   ├── schema.py
 │       │   └── splits.py
+│       ├── modeling/
+│       │   ├── features.py
+│       │   ├── metrics.py
+│       │   ├── models.py
+│       │   ├── report.py
+│       │   ├── rules.py
+│       │   └── train.py
 │       └── __init__.py
 ├── tests/
 │   ├── test_data_contract.py
+│   ├── test_model_features.py
+│   ├── test_model_metrics.py
+│   ├── test_models.py
 │   ├── test_provenance.py
 │   ├── test_schema.py
 │   ├── test_splits.py
-│   └── test_v01_artifacts.py
+│   ├── test_v01_artifacts.py
+│   └── test_v02_artifacts.py
 ├── .gitignore
 ├── pyproject.toml
 ├── README.md
@@ -128,10 +145,9 @@ sentinelgraph/
 
 ## Current status
 
-**v0.1 complete:** PaySim acquisition, checksum verification, exact
-full-dataset profiling, raw data contract, leakage assessment, chronological
-training/future split, future new-origin slice, Parquet artifacts, and the
-first generated data-quality report.
+**v0.2 baseline model stage complete:** PaySim acquisition and validation from
+v0.1 now feed leakage-safe dummy, policy-rule, balanced logistic-regression,
+and histogram gradient-boosting baselines.
 
 Observed v0.1 facts:
 
@@ -143,21 +159,37 @@ Observed v0.1 facts:
 
 See [the full data-quality report](docs/DATA_QUALITY_REPORT.md).
 
-## Reproduce v0.1
+Observed v0.2 future-time results:
+
+| Model | PR-AUC | Recall | FP / 10k legitimate | Captured fraud amount |
+| --- | ---: | ---: | ---: | ---: |
+| Large-transfer rule | 0.02019 | 33.47% | 649.97 | 49.72% |
+| Logistic regression | 0.21612 | 29.56% | 58.24 | 74.45% |
+| Histogram gradient boosting | 0.40481 | 47.45% | 56.08 | 80.11% |
+
+Learned-model thresholds are selected only on steps 417–520 under a 1% FPR
+budget. Final future steps 521–743 remain untouched until evaluation. See the
+[baseline report](docs/BASELINE_REPORT.md) for validation, future-time, and
+new-account results.
+
+## Reproduce v0.1 and v0.2
 
 Python 3.11 or newer and `uv` are recommended:
 
 ```bash
 uv sync --extra dev
 uv run sentinelgraph-data all
+uv run sentinelgraph-baselines
 uv run ruff check .
 uv run mypy src
 uv run pytest -q
 ```
 
 `sentinelgraph-data all` downloads about 178 MiB and creates approximately
-1 GiB of ignored raw, analytical, and processed artifacts. Individual stages
-are available as `acquire`, `validate`, `profile`, `split`, and `report`.
+1 GiB of ignored raw, analytical, and processed artifacts.
+`sentinelgraph-baselines` trains all v0.2 models, writes ignored model binaries,
+and regenerates the tracked metrics and report. Calibration, behavioural
+features, anomaly detection, and graph intelligence remain outside v0.2.
 
 ## Development principles
 

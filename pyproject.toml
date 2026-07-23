@@ -4,17 +4,21 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sentinelgraph"
-version = "0.1.0"
+version = "0.2.0.dev0"
 description = "Production fraud, account-takeover, and risk intelligence platform"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
   "duckdb>=1.4,<2",
+  "joblib>=1.4,<2",
+  "numpy>=2.0,<2.4",
   "pydantic>=2.0",
+  "scikit-learn>=1.7,<2",
 ]
 
 [project.scripts]
 sentinelgraph-data = "sentinelgraph.data.pipeline:main"
+sentinelgraph-baselines = "sentinelgraph.modeling.train:main"
 
 [project.optional-dependencies]
 dev = [
@@ -39,3 +43,7 @@ target-version = "py311"
 [tool.mypy]
 python_version = "3.11"
 strict = true
+
+[[tool.mypy.overrides]]
+module = ["joblib", "sklearn.*"]
+ignore_missing_imports = true
