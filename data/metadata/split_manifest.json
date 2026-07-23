@@ -1,0 +1,64 @@
+{
+  "future_start_step_inclusive": 521,
+  "maximum_step": 743,
+  "minimum_step": 1,
+  "new_account_definition": "origin account nameOrig has no transaction at or before the training cutoff",
+  "relationship": "new_account_holdout is a subset of future_time_holdout; both are disjoint from train",
+  "splits": {
+    "future_time_holdout": {
+      "artifact": {
+        "path": "data/processed/future_time_holdout.parquet",
+        "sha256": "2473a159ef7a0c6423c17880b8720652d305fe2777ad6c363fab50eb2f2399b0",
+        "size_bytes": 8567784
+      },
+      "definition": "t.step > 520",
+      "statistics": {
+        "fraud_amount": 3627405635.4000034,
+        "fraud_rate": 0.008666740314953335,
+        "fraud_rows": 2432,
+        "max_step": 743,
+        "min_step": 521,
+        "rows": 280613,
+        "unique_origins": 280596
+      }
+    },
+    "new_account_holdout": {
+      "artifact": {
+        "path": "data/processed/new_account_holdout.parquet",
+        "sha256": "0dd563a7e53b17091c1fa754afefefe70b4578f57d0b5eaffff836d44f1ff946",
+        "size_bytes": 8545134
+      },
+      "definition": "t.step > 520 AND NOT EXISTS (SELECT 1 FROM training_origins known WHERE known.nameOrig = t.nameOrig)",
+      "statistics": {
+        "fraud_amount": 3625628256.019998,
+        "fraud_rate": 0.008672596097153087,
+        "fraud_rows": 2427,
+        "max_step": 743,
+        "min_step": 521,
+        "rows": 279847,
+        "unique_origins": 279830
+      }
+    },
+    "train": {
+      "artifact": {
+        "path": "data/processed/train.parquet",
+        "sha256": "efb17bf50c8849699eb888ddf7af79b53bb59416d337651db99a636932c02381",
+        "size_bytes": 183776448
+      },
+      "definition": "t.step <= 520",
+      "statistics": {
+        "fraud_amount": 8429009792.4400015,
+        "fraud_rate": 0.0009505086067806235,
+        "fraud_rows": 5781,
+        "max_step": 520,
+        "min_step": 1,
+        "rows": 6082007,
+        "unique_origins": 6073477
+      }
+    }
+  },
+  "strategy": "chronological_time_span_then_future_new-origin_slice",
+  "train_end_step_inclusive": 520,
+  "train_fraction_by_observed_time_span": 0.7,
+  "training_new_origin_violations": 0
+}

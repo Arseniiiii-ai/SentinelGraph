@@ -1,0 +1,222 @@
+{
+  "account_activity": {
+    "accounts_touching_fraud": 16382,
+    "max_events_per_account": 113,
+    "median_events_per_account": 1.0,
+    "merchant_accounts": 2150401,
+    "p95_events_per_account": 2.0,
+    "repeat_originators": 9298,
+    "unique_accounts": 9073900
+  },
+  "duplicates": {
+    "duplicate_groups": 0,
+    "duplicate_rows": 0
+  },
+  "label_relationships": {
+    "flagged_non_fraud_rows": 0,
+    "flagged_true_fraud_rows": 16,
+    "zero_amount_fraud_rows": 16,
+    "zero_amount_rows": 16
+  },
+  "missing_values": {
+    "amount": 0,
+    "isFlaggedFraud": 0,
+    "isFraud": 0,
+    "nameDest": 0,
+    "nameOrig": 0,
+    "newbalanceDest": 0,
+    "newbalanceOrig": 0,
+    "oldbalanceDest": 0,
+    "oldbalanceOrg": 0,
+    "step": 0,
+    "type": 0
+  },
+  "overview": {
+    "flagged_rate": 2.51468734577894e-06,
+    "flagged_rows": 16,
+    "fraud_amount": 12056415427.840002,
+    "fraud_rate": 0.001290820448180152,
+    "fraud_rows": 8213,
+    "max_amount": 92445516.64,
+    "max_step": 743,
+    "min_amount": 0.0,
+    "min_step": 1,
+    "rows": 6362620,
+    "total_amount": 1144392944759.7678,
+    "unique_destinations": 2722362,
+    "unique_origins": 6353307
+  },
+  "semantic_missingness": {
+    "customer_zero_destination_balances": 165787,
+    "merchant_destination_rows": 2151495,
+    "merchant_zero_balance_placeholders": 2151495
+  },
+  "temporal_activity": {
+    "max_rows_per_step": 51352,
+    "median_rows_per_step": 529.0,
+    "min_rows_per_step": 2,
+    "observed_steps": 743,
+    "steps_with_fraud": 741
+  },
+  "top_destination_accounts": [
+    {
+      "account_id": "C1286084959",
+      "fraud_transactions": 0,
+      "total_amount": 77428943.31000002,
+      "transactions": 113
+    },
+    {
+      "account_id": "C985934102",
+      "fraud_transactions": 0,
+      "total_amount": 42422887.97999999,
+      "transactions": 109
+    },
+    {
+      "account_id": "C665576141",
+      "fraud_transactions": 0,
+      "total_amount": 88749384.37999997,
+      "transactions": 105
+    },
+    {
+      "account_id": "C2083562754",
+      "fraud_transactions": 0,
+      "total_amount": 53073938.75999999,
+      "transactions": 102
+    },
+    {
+      "account_id": "C1590550415",
+      "fraud_transactions": 0,
+      "total_amount": 43206101.59000002,
+      "transactions": 101
+    },
+    {
+      "account_id": "C248609774",
+      "fraud_transactions": 0,
+      "total_amount": 40680160.99,
+      "transactions": 101
+    },
+    {
+      "account_id": "C1789550256",
+      "fraud_transactions": 0,
+      "total_amount": 177885264.6,
+      "transactions": 99
+    },
+    {
+      "account_id": "C451111351",
+      "fraud_transactions": 0,
+      "total_amount": 37453031.39000001,
+      "transactions": 99
+    },
+    {
+      "account_id": "C1360767589",
+      "fraud_transactions": 0,
+      "total_amount": 35121289.27,
+      "transactions": 98
+    },
+    {
+      "account_id": "C1023714065",
+      "fraud_transactions": 0,
+      "total_amount": 42402918.4,
+      "transactions": 97
+    }
+  ],
+  "top_origin_accounts": [
+    {
+      "account_id": "C545315117",
+      "fraud_transactions": 0,
+      "total_amount": 2485461.6399999997,
+      "transactions": 3
+    },
+    {
+      "account_id": "C724452879",
+      "fraud_transactions": 0,
+      "total_amount": 838815.3,
+      "transactions": 3
+    },
+    {
+      "account_id": "C1902386530",
+      "fraud_transactions": 0,
+      "total_amount": 763712.79,
+      "transactions": 3
+    },
+    {
+      "account_id": "C1976208114",
+      "fraud_transactions": 0,
+      "total_amount": 511130.35000000003,
+      "transactions": 3
+    },
+    {
+      "account_id": "C1530544995",
+      "fraud_transactions": 0,
+      "total_amount": 490535.08999999997,
+      "transactions": 3
+    },
+    {
+      "account_id": "C1784010646",
+      "fraud_transactions": 0,
+      "total_amount": 436700.25,
+      "transactions": 3
+    },
+    {
+      "account_id": "C2098525306",
+      "fraud_transactions": 0,
+      "total_amount": 378102.22,
+      "transactions": 3
+    },
+    {
+      "account_id": "C1832548028",
+      "fraud_transactions": 0,
+      "total_amount": 313665.83,
+      "transactions": 3
+    },
+    {
+      "account_id": "C1999539787",
+      "fraud_transactions": 0,
+      "total_amount": 290555.01,
+      "transactions": 3
+    },
+    {
+      "account_id": "C1677795071",
+      "fraud_transactions": 0,
+      "total_amount": 244735.38,
+      "transactions": 3
+    }
+  ],
+  "transaction_types": [
+    {
+      "fraud_amount": 5989202243.83,
+      "fraud_rows": 4116,
+      "rows": 2237500,
+      "total_amount": 394412995224.493,
+      "type": "CASH_OUT"
+    },
+    {
+      "fraud_amount": 0.0,
+      "fraud_rows": 0,
+      "rows": 2151495,
+      "total_amount": 28093371138.370155,
+      "type": "PAYMENT"
+    },
+    {
+      "fraud_amount": 0.0,
+      "fraud_rows": 0,
+      "rows": 1399284,
+      "total_amount": 236367391912.4597,
+      "type": "CASH_IN"
+    },
+    {
+      "fraud_amount": 6067213184.010001,
+      "fraud_rows": 4097,
+      "rows": 532909,
+      "total_amount": 485291987263.17053,
+      "type": "TRANSFER"
+    },
+    {
+      "fraud_amount": 0.0,
+      "fraud_rows": 0,
+      "rows": 41432,
+      "total_amount": 227199221.28000003,
+      "type": "DEBIT"
+    }
+  ]
+}

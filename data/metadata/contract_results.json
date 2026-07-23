@@ -1,0 +1,32 @@
+{
+  "errors": {
+    "flag_outside_transfer": 0,
+    "fraud_outside_expected_types": 0,
+    "invalid_destination_id": 0,
+    "invalid_flag_label": 0,
+    "invalid_fraud_label": 0,
+    "invalid_origin_id": 0,
+    "invalid_step": 0,
+    "invalid_type": 0,
+    "negative_amount": 0,
+    "negative_balance": 0,
+    "null_amount": 0,
+    "null_isFlaggedFraud": 0,
+    "null_isFraud": 0,
+    "null_nameDest": 0,
+    "null_nameOrig": 0,
+    "null_newbalanceDest": 0,
+    "null_newbalanceOrig": 0,
+    "null_oldbalanceDest": 0,
+    "null_oldbalanceOrg": 0,
+    "null_step": 0,
+    "null_type": 0,
+    "self_transfer": 0
+  },
+  "passed": true,
+  "row_count": 6362620,
+  "warnings": {
+    "unexpected_origin_increase": 2,
+    "zero_amount": 16
+  }
+}
