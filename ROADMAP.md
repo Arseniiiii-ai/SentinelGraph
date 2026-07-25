@@ -16,16 +16,17 @@ Exit criterion: a reviewed data card and split specification. **Met in v0.1.**
 
 ## Phase 1 — Reproducible baseline
 
-- [ ] Build raw-to-processed data pipeline
-- [ ] Add Pandera data checks
-- [ ] Build a rule baseline
-- [ ] Build DummyClassifier baseline
-- [ ] Build logistic regression pipeline
-- [ ] Add PR-AUC, recall-at-FPR, calibration, and cost metrics
-- [ ] Track experiments
-- [ ] Publish baseline report
+- [x] Build raw-to-processed data pipeline
+- [x] Add automated data-contract checks
+- [x] Build a rule baseline
+- [x] Build DummyClassifier baseline
+- [x] Build logistic regression pipeline
+- [x] Build histogram gradient-boosting baseline
+- [x] Add PR-AUC, recall-at-FPR, calibration, and cost metrics
+- [x] Track baseline configuration and metrics as JSON artifacts
+- [x] Publish baseline report
 
-Exit criterion: one command reproduces the baseline metrics.
+Exit criterion: one command reproduces the baseline metrics. **Met in v0.2.**
 
 ## Phase 2 — Behavioural ML
 
