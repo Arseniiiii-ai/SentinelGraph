@@ -47,14 +47,16 @@ measure ranking and anomaly value independently.
 
 ## Phase 3 — Graph intelligence
 
-- [ ] Build account transaction graph
-- [ ] Calculate degree, fan-in/fan-out, velocity, and component features
-- [ ] Add suspicious-neighbour exposure without target leakage
-- [ ] Compare graph features against the behavioural model
-- [ ] Test GraphSAGE only after a strong non-GNN baseline
-- [ ] Document whether the GNN adds enough value to keep
+- [x] Build account transaction graph
+- [x] Calculate degree, fan-in/fan-out, flow, and component features
+- [x] Define and enforce a leakage-safe neighbour-label policy
+- [x] Compare graph features against the behavioural model
+- [x] Evaluate GraphSAGE eligibility after a strong non-GNN baseline
+- [x] Document whether graph and GNN complexity add enough value to keep
 
 Exit criterion: measured incremental value and a clear keep/remove decision.
+**Met in v0.4:** graph features and GraphSAGE are not promoted on PaySim; the
+v0.3 behavioural model remains champion.
 
 ## Phase 4 — Decision engine and explanations
 

@@ -99,10 +99,12 @@ sentinelgraph/
 │   └── processed/         # ignored leakage-safe Parquet splits
 ├── models/
 │   ├── v0.2/              # ignored fitted baseline binaries
-│   └── v0.3/              # ignored behavioural/anomaly binaries
+│   ├── v0.3/              # ignored behavioural/anomaly binaries
+│   └── v0.4/              # ignored graph experiment binaries
 ├── reports/
 │   ├── v0.2/baseline_metrics.json
-│   └── v0.3/behavioural_metrics.json
+│   ├── v0.3/behavioural_metrics.json
+│   └── v0.4/graph_metrics.json
 ├── docs/
 │   ├── BASELINE_REPORT.md
 │   ├── BEHAVIOURAL_FEATURES.md
@@ -110,6 +112,8 @@ sentinelgraph/
 │   ├── DATA_DICTIONARY.md
 │   ├── DATA_QUALITY_REPORT.md
 │   ├── DATA_SOURCE.md
+│   ├── GRAPH_FEATURES.md
+│   ├── GRAPH_REPORT.md
 │   ├── PROJECT_CHARTER.md
 │   └── SPLIT_SPEC.md
 ├── src/
@@ -128,6 +132,9 @@ sentinelgraph/
 │       │   ├── anomaly.py
 │       │   ├── behaviour.py
 │       │   ├── features.py
+│       │   ├── graph.py
+│       │   ├── graph_report.py
+│       │   ├── graph_train.py
 │       │   ├── metrics.py
 │       │   ├── models.py
 │       │   ├── report.py
@@ -138,6 +145,7 @@ sentinelgraph/
 │   ├── test_data_contract.py
 │   ├── test_anomaly_models.py
 │   ├── test_behavioural_features.py
+│   ├── test_graph_features.py
 │   ├── test_model_features.py
 │   ├── test_model_metrics.py
 │   ├── test_models.py
@@ -146,7 +154,8 @@ sentinelgraph/
 │   ├── test_splits.py
 │   ├── test_v01_artifacts.py
 │   ├── test_v02_artifacts.py
-│   └── test_v03_artifacts.py
+│   ├── test_v03_artifacts.py
+│   └── test_v04_artifacts.py
 ├── .gitignore
 ├── pyproject.toml
 ├── README.md
@@ -155,9 +164,9 @@ sentinelgraph/
 
 ## Current status
 
-**v0.3 behavioural ML stage complete:** strict prior-step account histories,
-velocity, amount deviation, transaction-type behaviour, counterparty diversity,
-and legitimate-only anomaly detection now extend the v0.2 baselines.
+**v0.4 graph intelligence stage complete:** exact prior-step node degree, flow,
+role, and weak-component features have been compared with the v0.3 behavioural
+champion, including a documented keep/remove decision.
 
 Observed v0.1 facts:
 
@@ -195,7 +204,21 @@ its validation-only complexity hurdle and remains a documented negative result.
 See the [feature dictionary](docs/BEHAVIOURAL_FEATURES.md) and
 [v0.3 report](docs/BEHAVIOURAL_REPORT.md).
 
-## Reproduce v0.1 through v0.3
+Observed v0.4 future-time results:
+
+| Model | PR-AUC | Recall | FP / 10k legitimate | Captured fraud amount |
+| --- | ---: | ---: | ---: | ---: |
+| v0.3 behavioural champion | 0.60967 | 69.04% | 79.01 | 92.61% |
+| Graph-only gradient boosting | 0.61776 | 67.23% | 68.73 | 91.85% |
+| Behavioural + graph boosting | 0.60478 | 68.38% | 78.51 | 92.46% |
+
+The graph-only future result is operationally interesting, but its validation
+PR-AUC gain is only 0.00120, below the 0.005 complexity hurdle. Graph
+augmentation reduces PR-AUC, so the v0.3 model remains champion and GraphSAGE
+is not retained. See the [graph feature dictionary](docs/GRAPH_FEATURES.md) and
+[v0.4 report](docs/GRAPH_REPORT.md).
+
+## Reproduce v0.1 through v0.4
 
 Python 3.11 or newer and `uv` are recommended:
 
@@ -204,6 +227,7 @@ uv sync --extra dev
 uv run sentinelgraph-data all
 uv run sentinelgraph-baselines
 uv run sentinelgraph-behaviour
+uv run sentinelgraph-graph
 uv run ruff check .
 uv run mypy src
 uv run pytest -q
@@ -214,8 +238,10 @@ uv run pytest -q
 `sentinelgraph-baselines` trains all v0.2 models, writes ignored model binaries,
 and regenerates the tracked metrics and report. `sentinelgraph-behaviour`
 builds the ignored point-in-time feature store, trains v0.3 challengers, and
-regenerates tracked v0.3 metrics and documentation. Graph intelligence remains
-for v0.4 and probability calibration remains for v0.5.
+regenerates tracked v0.3 metrics and documentation. `sentinelgraph-graph`
+constructs the point-in-time graph, trains v0.4 challengers, and regenerates
+tracked graph metrics and documentation. Probability calibration remains for
+v0.5.
 
 ## Development principles
 
