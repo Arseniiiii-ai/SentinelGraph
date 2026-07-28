@@ -98,12 +98,15 @@ sentinelgraph/
 │   ├── interim/           # ignored DuckDB analytical cache
 │   └── processed/         # ignored leakage-safe Parquet splits
 ├── models/
-│   └── v0.2/              # ignored fitted baseline binaries
+│   ├── v0.2/              # ignored fitted baseline binaries
+│   └── v0.3/              # ignored behavioural/anomaly binaries
 ├── reports/
-│   └── v0.2/
-│       └── baseline_metrics.json
+│   ├── v0.2/baseline_metrics.json
+│   └── v0.3/behavioural_metrics.json
 ├── docs/
 │   ├── BASELINE_REPORT.md
+│   ├── BEHAVIOURAL_FEATURES.md
+│   ├── BEHAVIOURAL_REPORT.md
 │   ├── DATA_DICTIONARY.md
 │   ├── DATA_QUALITY_REPORT.md
 │   ├── DATA_SOURCE.md
@@ -120,6 +123,10 @@ sentinelgraph/
 │       │   ├── schema.py
 │       │   └── splits.py
 │       ├── modeling/
+│       │   ├── advanced.py
+│       │   ├── advanced_report.py
+│       │   ├── anomaly.py
+│       │   ├── behaviour.py
 │       │   ├── features.py
 │       │   ├── metrics.py
 │       │   ├── models.py
@@ -129,6 +136,8 @@ sentinelgraph/
 │       └── __init__.py
 ├── tests/
 │   ├── test_data_contract.py
+│   ├── test_anomaly_models.py
+│   ├── test_behavioural_features.py
 │   ├── test_model_features.py
 │   ├── test_model_metrics.py
 │   ├── test_models.py
@@ -136,7 +145,8 @@ sentinelgraph/
 │   ├── test_schema.py
 │   ├── test_splits.py
 │   ├── test_v01_artifacts.py
-│   └── test_v02_artifacts.py
+│   ├── test_v02_artifacts.py
+│   └── test_v03_artifacts.py
 ├── .gitignore
 ├── pyproject.toml
 ├── README.md
@@ -145,9 +155,9 @@ sentinelgraph/
 
 ## Current status
 
-**v0.2 baseline model stage complete:** PaySim acquisition and validation from
-v0.1 now feed leakage-safe dummy, policy-rule, balanced logistic-regression,
-and histogram gradient-boosting baselines.
+**v0.3 behavioural ML stage complete:** strict prior-step account histories,
+velocity, amount deviation, transaction-type behaviour, counterparty diversity,
+and legitimate-only anomaly detection now extend the v0.2 baselines.
 
 Observed v0.1 facts:
 
@@ -172,7 +182,20 @@ budget. Final future steps 521–743 remain untouched until evaluation. See the
 [baseline report](docs/BASELINE_REPORT.md) for validation, future-time, and
 new-account results.
 
-## Reproduce v0.1 and v0.2
+Observed v0.3 future-time results:
+
+| Model | PR-AUC | Recall | FP / 10k legitimate | Captured fraud amount |
+| --- | ---: | ---: | ---: | ---: |
+| Isolation Forest | 0.04205 | 33.06% | 635.95 | 74.70% |
+| Behavioural gradient boosting | 0.60967 | 69.04% | 79.01 | 92.61% |
+| Behavioural + anomaly boosting | 0.60539 | 71.09% | 104.50 | 92.91% |
+
+The behavioural gradient model is selected. Anomaly augmentation did not clear
+its validation-only complexity hurdle and remains a documented negative result.
+See the [feature dictionary](docs/BEHAVIOURAL_FEATURES.md) and
+[v0.3 report](docs/BEHAVIOURAL_REPORT.md).
+
+## Reproduce v0.1 through v0.3
 
 Python 3.11 or newer and `uv` are recommended:
 
@@ -180,6 +203,7 @@ Python 3.11 or newer and `uv` are recommended:
 uv sync --extra dev
 uv run sentinelgraph-data all
 uv run sentinelgraph-baselines
+uv run sentinelgraph-behaviour
 uv run ruff check .
 uv run mypy src
 uv run pytest -q
@@ -188,8 +212,10 @@ uv run pytest -q
 `sentinelgraph-data all` downloads about 178 MiB and creates approximately
 1 GiB of ignored raw, analytical, and processed artifacts.
 `sentinelgraph-baselines` trains all v0.2 models, writes ignored model binaries,
-and regenerates the tracked metrics and report. Calibration, behavioural
-features, anomaly detection, and graph intelligence remain outside v0.2.
+and regenerates the tracked metrics and report. `sentinelgraph-behaviour`
+builds the ignored point-in-time feature store, trains v0.3 challengers, and
+regenerates tracked v0.3 metrics and documentation. Graph intelligence remains
+for v0.4 and probability calibration remains for v0.5.
 
 ## Development principles
 
