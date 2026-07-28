@@ -1,0 +1,55 @@
+{
+  "artifact": {
+    "path": "data/processed/behavioural_features.parquet",
+    "sha256": "6cffa9967612f0a8fa7c1ec30da0213cd60aa576d222c029620aa2460b4c5aec",
+    "size_bytes": 156677050
+  },
+  "feature_count": 32,
+  "feature_names": [
+    "amount",
+    "log_amount",
+    "hour_sin",
+    "hour_cos",
+    "type_cash_in",
+    "type_cash_out",
+    "type_debit",
+    "type_payment",
+    "type_transfer",
+    "destination_is_merchant",
+    "origin_is_new",
+    "origin_log_prior_tx_count",
+    "origin_log_prior_amount_mean",
+    "origin_log_amount_deviation",
+    "origin_hours_since_last",
+    "origin_log_tx_count_24h",
+    "origin_log_amount_sum_24h",
+    "origin_log_tx_count_168h",
+    "origin_log_amount_sum_168h",
+    "origin_same_type_share",
+    "origin_log_unique_destinations",
+    "destination_is_new",
+    "destination_log_prior_tx_count",
+    "destination_log_prior_amount_mean",
+    "destination_log_amount_deviation",
+    "destination_hours_since_last",
+    "destination_log_tx_count_24h",
+    "destination_log_amount_sum_24h",
+    "destination_log_tx_count_168h",
+    "destination_log_amount_sum_168h",
+    "destination_same_type_share",
+    "destination_log_unique_origins"
+  ],
+  "fraud_rows": 8213,
+  "history_contract": {
+    "identifiers_emitted_as_features": false,
+    "identifiers_used_only_as_grouping_keys": [
+      "nameDest",
+      "nameOrig"
+    ],
+    "same_step_events_excluded": true,
+    "window_upper_bound_steps": -1
+  },
+  "maximum_step": 743,
+  "minimum_step": 1,
+  "rows": 6362620
+}

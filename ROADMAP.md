@@ -30,17 +30,20 @@ Exit criterion: one command reproduces the baseline metrics. **Met in v0.2.**
 
 ## Phase 2 — Behavioural ML
 
-- [ ] Create point-in-time account velocity features
-- [ ] Add counterparty diversity and amount deviation
-- [ ] Add historical transaction-type behaviour
-- [ ] Train LightGBM or CatBoost
-- [ ] Train Isolation Forest on legitimate behaviour
-- [ ] Calibrate probabilities
-- [ ] Optimize review threshold under capacity constraints
-- [ ] Complete sliced error analysis
+- [x] Create point-in-time account velocity features
+- [x] Add counterparty diversity and amount deviation
+- [x] Add historical transaction-type behaviour
+- [x] Train an advanced histogram-gradient-boosting challenger
+- [x] Train Isolation Forest on legitimate behaviour
+- [x] Evaluate anomaly-score augmentation with a complexity hurdle
+- [x] Optimize review threshold under capacity constraints
+- [x] Complete sliced error analysis
 
 Exit criterion: an advanced model beats the baseline on the future-time test
-without an unacceptable increase in false positives.
+without an unacceptable increase in false positives. **Met in v0.3.**
+
+Probability calibration remains deliberately scheduled for v0.5 so v0.3 can
+measure ranking and anomaly value independently.
 
 ## Phase 3 — Graph intelligence
 

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sentinelgraph"
-version = "0.2.0.dev0"
+version = "0.3.0.dev0"
 description = "Production fraud, account-takeover, and risk intelligence platform"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -19,6 +19,7 @@ dependencies = [
 [project.scripts]
 sentinelgraph-data = "sentinelgraph.data.pipeline:main"
 sentinelgraph-baselines = "sentinelgraph.modeling.train:main"
+sentinelgraph-behaviour = "sentinelgraph.modeling.advanced:main"
 
 [project.optional-dependencies]
 dev = [
