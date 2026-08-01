@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sentinelgraph"
-version = "0.4.0.dev0"
+version = "0.5.0.dev0"
 description = "Production fraud, account-takeover, and risk intelligence platform"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -21,6 +21,7 @@ sentinelgraph-data = "sentinelgraph.data.pipeline:main"
 sentinelgraph-baselines = "sentinelgraph.modeling.train:main"
 sentinelgraph-behaviour = "sentinelgraph.modeling.advanced:main"
 sentinelgraph-graph = "sentinelgraph.modeling.graph_train:main"
+sentinelgraph-risk = "sentinelgraph.modeling.risk_train:main"
 
 [project.optional-dependencies]
 dev = [
@@ -35,7 +36,7 @@ packages = ["src/sentinelgraph"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [
-  "integration: validates generated v0.1 artifacts when they are present",
+  "integration: validates tracked and locally generated release artifacts",
 ]
 
 [tool.ruff]

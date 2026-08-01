@@ -717,7 +717,7 @@ wheels = [
 
 [[package]]
 name = "sentinelgraph"
-version = "0.4.0.dev0"
+version = "0.5.0.dev0"
 source = { editable = "." }
 dependencies = [
     { name = "duckdb" },

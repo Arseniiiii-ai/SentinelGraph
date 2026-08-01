@@ -100,11 +100,13 @@ sentinelgraph/
 ├── models/
 │   ├── v0.2/              # ignored fitted baseline binaries
 │   ├── v0.3/              # ignored behavioural/anomaly binaries
-│   └── v0.4/              # ignored graph experiment binaries
+│   ├── v0.4/              # ignored graph experiment binaries
+│   └── v0.5/              # ignored calibrated risk bundle
 ├── reports/
 │   ├── v0.2/baseline_metrics.json
 │   ├── v0.3/behavioural_metrics.json
-│   └── v0.4/graph_metrics.json
+│   ├── v0.4/graph_metrics.json
+│   └── v0.5/              # risk metrics and reason-code examples
 ├── docs/
 │   ├── BASELINE_REPORT.md
 │   ├── BEHAVIOURAL_FEATURES.md
@@ -115,6 +117,7 @@ sentinelgraph/
 │   ├── GRAPH_FEATURES.md
 │   ├── GRAPH_REPORT.md
 │   ├── PROJECT_CHARTER.md
+│   ├── RISK_ENGINE_REPORT.md
 │   └── SPLIT_SPEC.md
 ├── src/
 │   └── sentinelgraph/
@@ -131,6 +134,8 @@ sentinelgraph/
 │       │   ├── advanced_report.py
 │       │   ├── anomaly.py
 │       │   ├── behaviour.py
+│       │   ├── calibration.py
+│       │   ├── decision.py
 │       │   ├── features.py
 │       │   ├── graph.py
 │       │   ├── graph_report.py
@@ -138,6 +143,8 @@ sentinelgraph/
 │       │   ├── metrics.py
 │       │   ├── models.py
 │       │   ├── report.py
+│       │   ├── risk_report.py
+│       │   ├── risk_train.py
 │       │   ├── rules.py
 │       │   └── train.py
 │       └── __init__.py
@@ -145,6 +152,8 @@ sentinelgraph/
 │   ├── test_data_contract.py
 │   ├── test_anomaly_models.py
 │   ├── test_behavioural_features.py
+│   ├── test_calibration.py
+│   ├── test_decision_policy.py
 │   ├── test_graph_features.py
 │   ├── test_model_features.py
 │   ├── test_model_metrics.py
@@ -155,7 +164,8 @@ sentinelgraph/
 │   ├── test_v01_artifacts.py
 │   ├── test_v02_artifacts.py
 │   ├── test_v03_artifacts.py
-│   └── test_v04_artifacts.py
+│   ├── test_v04_artifacts.py
+│   └── test_v05_artifacts.py
 ├── .gitignore
 ├── pyproject.toml
 ├── README.md
@@ -164,9 +174,9 @@ sentinelgraph/
 
 ## Current status
 
-**v0.4 graph intelligence stage complete:** exact prior-step node degree, flow,
-role, and weak-component features have been compared with the v0.3 behavioural
-champion, including a documented keep/remove decision.
+**v0.5 calibrated risk-engine stage complete:** classifier, anomaly, and graph
+evidence now produce calibrated probabilities, 0–1000 risk points, bounded
+review/decline policies, operational backtests, and local reason codes.
 
 Observed v0.1 facts:
 
@@ -218,7 +228,26 @@ augmentation reduces PR-AUC, so the v0.3 model remains champion and GraphSAGE
 is not retained. See the [graph feature dictionary](docs/GRAPH_FEATURES.md) and
 [v0.4 report](docs/GRAPH_REPORT.md).
 
-## Reproduce v0.1 through v0.4
+Observed v0.5 future-time results:
+
+| Measurement | Result |
+| --- | ---: |
+| Selected calibration | Logistic score stack |
+| PR-AUC | 0.61382 |
+| Brier score | 0.00547 |
+| Expected calibration error | 0.00653 |
+| Review queue rate | 0.979% |
+| Simulated decline rate | 0.134% |
+| Flagged fraud recall | 61.47% |
+| Recovered fraud amount proxy | 83.93% |
+
+Calibration fit, calibration selection, policy selection, and future evaluation
+use separate chronological windows. `Decline` is simulation-only, cost values
+are explicit PaySim proxies, and explanations use local legitimate-median
+occlusion rather than causal claims. See the
+[v0.5 risk-engine report](docs/RISK_ENGINE_REPORT.md).
+
+## Reproduce v0.1 through v0.5
 
 Python 3.11 or newer and `uv` are recommended:
 
@@ -228,6 +257,7 @@ uv run sentinelgraph-data all
 uv run sentinelgraph-baselines
 uv run sentinelgraph-behaviour
 uv run sentinelgraph-graph
+uv run sentinelgraph-risk
 uv run ruff check .
 uv run mypy src
 uv run pytest -q
@@ -240,8 +270,9 @@ and regenerates the tracked metrics and report. `sentinelgraph-behaviour`
 builds the ignored point-in-time feature store, trains v0.3 challengers, and
 regenerates tracked v0.3 metrics and documentation. `sentinelgraph-graph`
 constructs the point-in-time graph, trains v0.4 challengers, and regenerates
-tracked graph metrics and documentation. Probability calibration remains for
-v0.5.
+tracked graph metrics and documentation. `sentinelgraph-risk` calibrates the
+three evidence signals, selects a three-way policy, writes the v0.5 risk bundle,
+and regenerates tracked metrics, explanations, and documentation.
 
 ## Development principles
 
