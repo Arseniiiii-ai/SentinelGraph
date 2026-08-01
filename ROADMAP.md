@@ -75,16 +75,19 @@ assumptions.
 
 ## Phase 5 — Product API and case workflow
 
-- [ ] Create FastAPI single-score endpoint
-- [ ] Create batch-score endpoint
-- [ ] Add health/readiness endpoints
-- [ ] Store predictions and feature versions in PostgreSQL
-- [ ] Add investigator case and feedback tables
-- [ ] Build investigation dashboard
-- [ ] Add authentication and input limits
-- [ ] Run load and failure tests
+- [x] Create FastAPI single-score endpoint
+- [x] Create batch-score endpoint
+- [x] Add health/readiness endpoints
+- [x] Store predictions and feature versions in PostgreSQL
+- [x] Add investigator case and feedback tables
+- [x] Build investigation dashboard
+- [x] Add authentication and input limits
+- [x] Run local latency and failure-path tests
 
 Exit criterion: a reviewer can submit a transaction and investigate the case.
+**Implemented on the v0.6 development branch:** production PostgreSQL migration,
+single/batch scoring, durable audit history, investigator feedback, and a web
+console are covered. Container and distributed load testing remain v0.7 scope.
 
 ## Phase 6 — MLOps and monitoring
 
