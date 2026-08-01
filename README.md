@@ -106,7 +106,8 @@ sentinelgraph/
 │   ├── v0.2/baseline_metrics.json
 │   ├── v0.3/behavioural_metrics.json
 │   ├── v0.4/graph_metrics.json
-│   └── v0.5/              # risk metrics and reason-code examples
+│   ├── v0.5/              # risk metrics and reason-code examples
+│   └── v0.6/              # service contract and local latency evidence
 ├── docs/
 │   ├── BASELINE_REPORT.md
 │   ├── BEHAVIOURAL_FEATURES.md
@@ -118,7 +119,12 @@ sentinelgraph/
 │   ├── GRAPH_REPORT.md
 │   ├── PROJECT_CHARTER.md
 │   ├── RISK_ENGINE_REPORT.md
+│   ├── API.md
+│   ├── ARCHITECTURE_V06.md
+│   ├── INTERVIEW_V06.md
+│   ├── SERVICE_REPORT.md
 │   └── SPLIT_SPEC.md
+├── migrations/            # Alembic PostgreSQL schema history
 ├── src/
 │   └── sentinelgraph/
 │       ├── data/
@@ -147,6 +153,7 @@ sentinelgraph/
 │       │   ├── risk_train.py
 │       │   ├── rules.py
 │       │   └── train.py
+│       ├── api/            # FastAPI, inference, persistence, and dashboard
 │       └── __init__.py
 ├── tests/
 │   ├── test_data_contract.py
@@ -174,9 +181,10 @@ sentinelgraph/
 
 ## Current status
 
-**v0.5 calibrated risk-engine stage complete:** classifier, anomaly, and graph
-evidence now produce calibrated probabilities, 0–1000 risk points, bounded
-review/decline policies, operational backtests, and local reason codes.
+**v0.6 product API and case-workflow stage implemented locally:** the v0.5
+engine now has strict online feature contracts, single and batch FastAPI
+scoring, PostgreSQL persistence, idempotent audit writes, investigator cases,
+feedback, and a browser dashboard. The branch is not yet released.
 
 Observed v0.1 facts:
 
@@ -247,7 +255,7 @@ are explicit PaySim proxies, and explanations use local legitimate-median
 occlusion rather than causal claims. See the
 [v0.5 risk-engine report](docs/RISK_ENGINE_REPORT.md).
 
-## Reproduce v0.1 through v0.5
+## Reproduce v0.1 through v0.6
 
 Python 3.11 or newer and `uv` are recommended:
 
@@ -258,6 +266,7 @@ uv run sentinelgraph-baselines
 uv run sentinelgraph-behaviour
 uv run sentinelgraph-graph
 uv run sentinelgraph-risk
+uv run sentinelgraph-api-report
 uv run ruff check .
 uv run mypy src
 uv run pytest -q
@@ -273,6 +282,23 @@ constructs the point-in-time graph, trains v0.4 challengers, and regenerates
 tracked graph metrics and documentation. `sentinelgraph-risk` calibrates the
 three evidence signals, selects a three-way policy, writes the v0.5 risk bundle,
 and regenerates tracked metrics, explanations, and documentation.
+
+## Run v0.6 locally
+
+Provision PostgreSQL, then configure the service and apply its schema:
+
+```bash
+export SENTINELGRAPH_DATABASE_URL='postgresql+psycopg://sentinelgraph:sentinelgraph@localhost:5432/sentinelgraph'
+export SENTINELGRAPH_API_KEY='replace-with-a-long-local-secret'
+export SENTINELGRAPH_ACCOUNT_HASH_SALT='replace-with-a-separate-long-salt'
+uv run alembic upgrade head
+uv run sentinelgraph-api --host 127.0.0.1 --port 8000
+```
+
+The API documentation is available at `http://127.0.0.1:8000/docs` and the
+investigator console at `http://127.0.0.1:8000/dashboard`. Production mode also
+requires `SENTINELGRAPH_MODEL_SHA256` and a PostgreSQL URL. See
+[the API runbook](docs/API.md) and [v0.6 architecture](docs/ARCHITECTURE_V06.md).
 
 ## Development principles
 

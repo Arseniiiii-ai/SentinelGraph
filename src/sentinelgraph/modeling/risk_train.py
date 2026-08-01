@@ -589,6 +589,10 @@ def train_risk_engine(
         "calibrator": calibrator,
         "policy": policy,
         "cost_assumptions": costs,
+        "explanation_baseline": np.median(
+            development.features[development.labels == 0],
+            axis=0,
+        ).astype(np.float32),
     }
     joblib.dump(bundle, bundle_path, compress=3)
     _write_json(

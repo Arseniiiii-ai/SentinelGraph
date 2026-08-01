@@ -1,0 +1,56 @@
+{
+  "guardrails": {
+    "account_storage": "salted SHA-256 pseudonyms only",
+    "authentication": "constant-time API-key comparison",
+    "decline_semantics": "simulation-only recommendation",
+    "idempotency": "required key plus canonical request fingerprint",
+    "model_integrity": "production requires pre-deserialisation SHA-256"
+  },
+  "local_sequential_inference_benchmark": {
+    "environment": {
+      "implementation": "CPython",
+      "machine": "arm64",
+      "platform": "darwin",
+      "python": "3.13.5"
+    },
+    "includes_local_occlusion_explanations": true,
+    "latency_ms": {
+      "maximum": 13.392499997280538,
+      "mean": 10.998541479493724,
+      "minimum": 9.489791998930741,
+      "p50": 10.674000001017703,
+      "p95": 12.643183200270867,
+      "p99": 13.236979997891465
+    },
+    "model_version": "v0.5",
+    "rows": 25,
+    "rows_per_second": 90.91458710840458,
+    "scope": "local sequential warm model inference; database and HTTP excluded"
+  },
+  "release": "v0.6",
+  "service_contract": {
+    "api_endpoints": [
+      "GET /health/live",
+      "GET /health/ready",
+      "POST /v1/score",
+      "POST /v1/score/batch",
+      "GET /v1/cases",
+      "GET /v1/cases/{case_id}",
+      "POST /v1/cases/{case_id}/decision",
+      "GET /dashboard"
+    ],
+    "database_tables": [
+      "transactions",
+      "predictions",
+      "cases",
+      "case_events",
+      "investigator_feedback",
+      "model_versions"
+    ],
+    "event_derived_feature_count": 10,
+    "feature_version": "v0.6.0",
+    "historical_feature_count": 50,
+    "model_feature_count": 60,
+    "same_step_history_allowed": false
+  }
+}
