@@ -60,15 +60,18 @@ v0.3 behavioural model remains champion.
 
 ## Phase 4 — Decision engine and explanations
 
-- [ ] Combine classifier, anomaly, and graph scores
-- [ ] Add probability calibration
-- [ ] Implement approve/review/decline simulation
-- [ ] Add reason codes
-- [ ] Add SHAP or equivalent explanations
-- [ ] Backtest investigator queue size and captured fraud amount
-- [ ] Add policy regression tests
+- [x] Combine classifier, anomaly, and graph scores
+- [x] Add probability calibration
+- [x] Implement approve/review/decline simulation
+- [x] Add reason codes
+- [x] Add SHAP or equivalent explanations
+- [x] Backtest investigator queue size and captured fraud amount
+- [x] Add policy regression tests
 
 Exit criterion: decision thresholds have quantified operational consequences.
+**Met in v0.5:** a temporally governed score stack is calibrated, converted to
+three-way decisions, explained, and backtested under explicit queue and cost
+assumptions.
 
 ## Phase 5 — Product API and case workflow
 

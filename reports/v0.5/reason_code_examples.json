@@ -1,0 +1,911 @@
+{
+  "baseline": "per-feature median over legitimate development rows",
+  "coverage": "review and decline decisions only",
+  "examples": [
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9573399404521221,
+      "component_evidence": {
+        "anomaly_score": 0.7710471127278774,
+        "behavioural_probability": 0.9940316734010781,
+        "graph_probability": 0.994337222720423
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.4483398596778505,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.23805376521777155,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.04315317342929115,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 957,
+      "risk_rank": 1,
+      "transaction_amount": 1054244.29
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9475215207494626,
+      "component_evidence": {
+        "anomaly_score": 0.7040143988098898,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970927775752251
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8853483573148317,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.12275840412567962,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.021087090999373337,
+          "description": "A model feature materially increased risk.",
+          "feature": "destination_log_amount_sum_168h"
+        }
+      ],
+      "risk_points": 948,
+      "risk_rank": 2,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9458310466991702,
+      "component_evidence": {
+        "anomaly_score": 0.701578685388776,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.29388079903810815,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.03690222851040392,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.018088009183548914,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 946,
+      "risk_rank": 3,
+      "transaction_amount": 9421856.87
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9454584366091817,
+      "component_evidence": {
+        "anomaly_score": 0.7008304717006167,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.2935081889481197,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.037796615539022804,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.018294495175776193,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 945,
+      "risk_rank": 4,
+      "transaction_amount": 9097679.75
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9452149335787623,
+      "component_evidence": {
+        "anomaly_score": 0.7003435313970169,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.2932646859177003,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.03738925464805842,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.01804795911385304,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 945,
+      "risk_rank": 5,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.944692779798868,
+      "component_evidence": {
+        "anomaly_score": 0.6984167118067716,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970847063063116
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8474304665607821,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.23540562947703714,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "DESTINATION_TIMING_PATTERN",
+          "contribution": 0.023824701743621723,
+          "description": "Destination timing behaviour increased model risk.",
+          "feature": "destination_hours_since_last"
+        }
+      ],
+      "risk_points": 945,
+      "risk_rank": 6,
+      "transaction_amount": 9295454.24
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9421299449787188,
+      "component_evidence": {
+        "anomaly_score": 0.6943077325154264,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.3249892764914756,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.03203992380179266,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.018237706395899056,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 942,
+      "risk_rank": 7,
+      "transaction_amount": 8488865.83
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9420074114277962,
+      "component_evidence": {
+        "anomaly_score": 0.69407292638952,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.32486674294055295,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.03209244502882347,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.017925869594316635,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 942,
+      "risk_rank": 8,
+      "transaction_amount": 8537861.24
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9416046333464632,
+      "component_evidence": {
+        "anomaly_score": 0.6933036609172739,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.42779650007097114,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.045826010023721664,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.021797689819185395,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 942,
+      "risk_rank": 9,
+      "transaction_amount": 6870369.62
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9411296090619442,
+      "component_evidence": {
+        "anomaly_score": 0.6915020413823678,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970847063063116
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8659284709167833,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.2521944796879968,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.030672666527072123,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 941,
+      "risk_rank": 10,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9410838356612122,
+      "component_evidence": {
+        "anomaly_score": 0.691283411902803,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970927775752251
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8840021096019938,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.15244551546785057,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "DESTINATION_TIMING_PATTERN",
+          "contribution": 0.023756453994479232,
+          "description": "Destination timing behaviour increased model risk.",
+          "feature": "destination_hours_since_last"
+        }
+      ],
+      "risk_points": 941,
+      "risk_rank": 11,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9409851600690191,
+      "component_evidence": {
+        "anomaly_score": 0.6921281134717149,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.29553546850082246,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.027844184350321433,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.0213175427446064,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 941,
+      "risk_rank": 12,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9405909938084105,
+      "component_evidence": {
+        "anomaly_score": 0.6913848419108696,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.2918734456039752,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.04820904101075385,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.021938979609789966,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 941,
+      "risk_rank": 13,
+      "transaction_amount": 6274752.67
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9405909938084105,
+      "component_evidence": {
+        "anomaly_score": 0.6913848419108696,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.2918734456039752,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.04820904101075385,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.021938979609789966,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        }
+      ],
+      "risk_points": 941,
+      "risk_rank": 14,
+      "transaction_amount": 6250438.78
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.939495581256603,
+      "component_evidence": {
+        "anomaly_score": 0.6880848868871874,
+        "behavioural_probability": 0.9964260501244372,
+        "graph_probability": 0.9970927775752251
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8883997603185531,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.4994957668716717,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.02909440557513132,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 939,
+      "risk_rank": 15,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9381960727439059,
+      "component_evidence": {
+        "anomaly_score": 0.6860371305422935,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970847063063116
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8676397014006318,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.2353487757484487,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.028502654483739676,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 938,
+      "risk_rank": 16,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.937642362925724,
+      "component_evidence": {
+        "anomaly_score": 0.6849191710490611,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970912491354027
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8852728111126418,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.815639363654229,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "DESTINATION_TIMING_PATTERN",
+          "contribution": 0.031205418506172977,
+          "description": "Destination timing behaviour increased model risk.",
+          "feature": "destination_hours_since_last"
+        }
+      ],
+      "risk_points": 938,
+      "risk_rank": 17,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9371670250630213,
+      "component_evidence": {
+        "anomaly_score": 0.6838139678667353,
+        "behavioural_probability": 0.9964260501244372,
+        "graph_probability": 0.9970927775752251
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8843153369020599,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.1267577242935436,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.026343453583721033,
+          "description": "A model feature materially increased risk.",
+          "feature": "destination_log_amount_sum_168h"
+        }
+      ],
+      "risk_points": 937,
+      "risk_rank": 18,
+      "transaction_amount": 3973479.44
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9367252680046921,
+      "component_evidence": {
+        "anomaly_score": 0.6836211275785723,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970694188583129
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.6003962659385952,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.24047589467925956,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.02517632389618152,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 937,
+      "risk_rank": 19,
+      "transaction_amount": 3542716.02
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9365959168031128,
+      "component_evidence": {
+        "anomaly_score": 0.6834141187156783,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970678781740184
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.6592765488761788,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.543727177813508,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.03406803801379765,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 937,
+      "risk_rank": 20,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9357881533197571,
+      "component_evidence": {
+        "anomaly_score": 0.6815587665987378,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970927775752251
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8806174202336959,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.19255483391095907,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.030952117762259146,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 936,
+      "risk_rank": 21,
+      "transaction_amount": 5016884.33
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9356760954334945,
+      "component_evidence": {
+        "anomaly_score": 0.6814936224534504,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970847063063116
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8667533542888899,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.26981190790730036,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.03400186518755011,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 936,
+      "risk_rank": 22,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9355426210859125,
+      "component_evidence": {
+        "anomaly_score": 0.6812820994113278,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970831736355228
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.8502496328547603,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.8255318887095268,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.031068537933929385,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 936,
+      "risk_rank": 23,
+      "transaction_amount": 8980853.88
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9350225045085215,
+      "component_evidence": {
+        "anomaly_score": 0.680615640681891,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970678781740184
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.8186091413354277,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "CASH_OUT_PATTERN",
+          "contribution": 0.6070594710563142,
+          "description": "Cash-out behaviour materially increased risk.",
+          "feature": "type_cash_out"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.030984658301110413,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        }
+      ],
+      "risk_points": 935,
+      "risk_rank": 24,
+      "transaction_amount": 10000000.0
+    },
+    {
+      "actual_fraud_label": 1,
+      "calibrated_probability": 0.9347044703426587,
+      "component_evidence": {
+        "anomaly_score": 0.6806947207427362,
+        "behavioural_probability": 0.996406071082308,
+        "graph_probability": 0.9970289829033864
+      },
+      "decision": "decline",
+      "reason_codes": [
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.6838525941280618,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "amount"
+        },
+        {
+          "code": "MODEL_FEATURE_ELEVATED",
+          "contribution": 0.04206039493331015,
+          "description": "A model feature materially increased risk.",
+          "feature": "hour_cos"
+        },
+        {
+          "code": "HIGH_TRANSACTION_AMOUNT",
+          "contribution": 0.016850312080099905,
+          "description": "Transaction amount materially increased risk.",
+          "feature": "log_amount"
+        }
+      ],
+      "risk_points": 935,
+      "risk_rank": 25,
+      "transaction_amount": 7218629.01
+    }
+  ],
+  "global_importance": [
+    {
+      "feature": "amount",
+      "mean_positive_contribution": 0.4045046473749755,
+      "reason_code": "HIGH_TRANSACTION_AMOUNT"
+    },
+    {
+      "feature": "type_cash_out",
+      "mean_positive_contribution": 0.31555779541024614,
+      "reason_code": "CASH_OUT_PATTERN"
+    },
+    {
+      "feature": "hour_cos",
+      "mean_positive_contribution": 0.07476141936608154,
+      "reason_code": "MODEL_FEATURE_ELEVATED"
+    },
+    {
+      "feature": "destination_log_graph_in_tx_count",
+      "mean_positive_contribution": 0.05544911081881886,
+      "reason_code": "DESTINATION_GRAPH_ACTIVITY"
+    },
+    {
+      "feature": "destination_hours_since_last",
+      "mean_positive_contribution": 0.026377959884274736,
+      "reason_code": "DESTINATION_TIMING_PATTERN"
+    },
+    {
+      "feature": "destination_is_new",
+      "mean_positive_contribution": 0.01286359829137177,
+      "reason_code": "NEW_DESTINATION_ACCOUNT"
+    },
+    {
+      "feature": "destination_log_amount_sum_168h",
+      "mean_positive_contribution": 0.011909645514379777,
+      "reason_code": "MODEL_FEATURE_ELEVATED"
+    },
+    {
+      "feature": "log_amount",
+      "mean_positive_contribution": 0.01149258457952456,
+      "reason_code": "HIGH_TRANSACTION_AMOUNT"
+    },
+    {
+      "feature": "hour_sin",
+      "mean_positive_contribution": 0.009149963633861221,
+      "reason_code": "MODEL_FEATURE_ELEVATED"
+    },
+    {
+      "feature": "component_size_log_ratio",
+      "mean_positive_contribution": 0.007793357995017795,
+      "reason_code": "GRAPH_COMPONENT_PATTERN"
+    },
+    {
+      "feature": "destination_log_graph_total_degree",
+      "mean_positive_contribution": 0.003332766677413993,
+      "reason_code": "DESTINATION_GRAPH_ACTIVITY"
+    },
+    {
+      "feature": "destination_log_tx_count_168h",
+      "mean_positive_contribution": 0.003204591717475661,
+      "reason_code": "MODEL_FEATURE_ELEVATED"
+    },
+    {
+      "feature": "destination_log_amount_deviation",
+      "mean_positive_contribution": 0.0031469324088458316,
+      "reason_code": "DESTINATION_AMOUNT_DEVIATION"
+    },
+    {
+      "feature": "destination_log_prior_amount_mean",
+      "mean_positive_contribution": 0.002456352217089686,
+      "reason_code": "MODEL_FEATURE_ELEVATED"
+    },
+    {
+      "feature": "type_transfer",
+      "mean_positive_contribution": 0.0011270785058531852,
+      "reason_code": "TRANSFER_PATTERN"
+    }
+  ],
+  "method": "local_legitimate_median_occlusion",
+  "sample_rows": 100,
+  "tracked_example_rows": 25
+}
