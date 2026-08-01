@@ -215,6 +215,26 @@ def test_idempotency_conflict_is_rejected(
     assert conflict.status_code == 409
 
 
+def test_crossed_external_id_and_idempotency_key_are_rejected(
+    api: tuple[TestClient, Database, FakeScorer],
+) -> None:
+    client, _, _ = api
+    first_payload = score_payload(external_id="tx-first", amount=500.0)
+    second_payload = score_payload(external_id="tx-second", amount=600.0)
+    assert client.post(
+        "/v1/score", json=first_payload, headers=auth_headers("idem-first")
+    ).status_code == 201
+    assert client.post(
+        "/v1/score", json=second_payload, headers=auth_headers("idem-second")
+    ).status_code == 201
+
+    crossed = client.post(
+        "/v1/score", json=first_payload, headers=auth_headers("idem-second")
+    )
+    assert crossed.status_code == 409
+    assert "different transactions" in crossed.json()["detail"]
+
+
 def test_review_case_can_be_closed_with_feedback(
     api: tuple[TestClient, Database, FakeScorer],
 ) -> None:

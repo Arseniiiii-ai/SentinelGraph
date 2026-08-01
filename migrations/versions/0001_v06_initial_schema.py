@@ -191,7 +191,6 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    op.drop_table("model_versions")
     op.drop_index(
         "ix_feedback_case_created", table_name="investigator_feedback"
     )
@@ -203,5 +202,6 @@ def downgrade() -> None:
     op.drop_index("ix_predictions_decision_created", table_name="predictions")
     op.drop_index("ix_predictions_created_at", table_name="predictions")
     op.drop_table("predictions")
+    op.drop_table("model_versions")
     op.drop_index("ix_transactions_received_at", table_name="transactions")
     op.drop_table("transactions")

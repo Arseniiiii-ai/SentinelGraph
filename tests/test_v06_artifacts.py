@@ -61,6 +61,10 @@ def test_migration_contains_auditable_schema_and_model_registry() -> None:
         assert f'"{table}"' in migration
     assert "fk_predictions_model_version" in migration
     assert "JSONB" in migration
+    downgrade = migration.split("def downgrade() -> None:", maxsplit=1)[1]
+    assert downgrade.index('op.drop_table("predictions")') < downgrade.index(
+        'op.drop_table("model_versions")'
+    )
 
 
 def test_versions_and_interview_bank_are_current() -> None:

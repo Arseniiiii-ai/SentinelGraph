@@ -26,6 +26,8 @@ from sentinelgraph.modeling.graph import (
 from sentinelgraph.modeling.behaviour import BEHAVIOURAL_FEATURE_NAMES
 from sentinelgraph.modeling.metrics import positive_scores
 
+MODEL_VERSION = "v0.5"
+
 
 @dataclass(frozen=True, slots=True)
 class InferenceResult:
@@ -116,6 +118,10 @@ class RiskScorer:
         missing = sorted(required - set(bundle))
         if missing:
             raise RiskBundleError(f"risk bundle missing key: {missing[0]}")
+        if str(bundle["release"]) != MODEL_VERSION:
+            raise RiskBundleError(
+                f"risk bundle release must be {MODEL_VERSION}"
+            )
         contracts: tuple[tuple[str, Sequence[str]], ...] = (
             ("feature_names", GRAPH_FEATURE_NAMES),
             ("behavioural_feature_names", BEHAVIOURAL_FEATURE_NAMES),

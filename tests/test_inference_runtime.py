@@ -98,6 +98,15 @@ def test_risk_scorer_rejects_feature_contract_mismatch(tmp_path: Path) -> None:
         RiskScorer(path)
 
 
+def test_risk_scorer_rejects_wrong_model_release(tmp_path: Path) -> None:
+    path = tmp_path / "invalid.joblib"
+    bundle = valid_bundle()
+    bundle["release"] = "v0.4"
+    write_bundle(path, bundle)
+    with pytest.raises(RiskBundleError, match="release must be v0.5"):
+        RiskScorer(path)
+
+
 def test_risk_scorer_requires_explanation_baseline(tmp_path: Path) -> None:
     path = tmp_path / "invalid.joblib"
     bundle = valid_bundle()

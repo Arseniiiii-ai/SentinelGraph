@@ -124,13 +124,18 @@ class ScoringService:
     ) -> ScoreResponse:
         """Return a replay or stage one new transaction/prediction/case write."""
         fingerprint = request_fingerprint(request)
-        existing = session.scalar(
+        matches = session.scalars(
             select(TransactionRecord).where(
                 (TransactionRecord.external_id == request.external_id)
                 | (TransactionRecord.idempotency_key == idempotency_key)
             )
-        )
-        if existing is not None:
+        ).all()
+        if len(matches) > 1:
+            raise ConflictError(
+                "external_id and Idempotency-Key refer to different transactions"
+            )
+        if matches:
+            existing = matches[0]
             if existing.request_hash != fingerprint:
                 raise ConflictError(
                     "external_id or Idempotency-Key was reused with a different payload"
